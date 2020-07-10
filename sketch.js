@@ -68,11 +68,10 @@ function logger() {
   }
 }
 
-function colorLerp(amount, ipercDayOver) {
+function colorLerp(amount) {
   const hour = +currentTime.slice(0, 2);
   const minute = +currentTime.slice(2, 4);
   const percDayOver = (hour + minute / 60) / 24;
-  // const percDayOver = ipercDayOver || 0;
   const borders = [];
   let runningBorderFilled = 0,
     lowerBorderIndex = 0;
@@ -88,10 +87,6 @@ function colorLerp(amount, ipercDayOver) {
   const lowerColor = color(colorStore[lowerBorderIndex]);
   const upperColor = color(colorStore[lowerBorderIndex + 1]);
   const lerpAmount = amount - borders[lowerBorderIndex];
-  // colors(lowerColor);
-  // colors(upperColor);
-  // logger(amount, lowerBorderIndex, lerpAmount);
-  logger("Borders:", borders);
   return lerpColor(lowerColor, upperColor, lerpAmount);
 }
 
